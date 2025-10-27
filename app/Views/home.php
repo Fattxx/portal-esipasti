@@ -6,11 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal SIPASTI - Sistem Informasi Pengawasan dan Tindak Lanjut</title>
     
-    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
@@ -19,6 +16,204 @@
             padding: 0;
             box-sizing: border-box;
         }
+
+        /* == PRELOADER CSS START == */
+        #preloader {
+          position: fixed;
+          left: 0%;
+          right: 0%;
+          top: 0%;
+          width: 100%;
+          height: 100%;
+          /* MODIFIKASI: Menyamakan background dengan body home.php */
+          background: linear-gradient(135deg, #3d0145 0%, #bd21ff 100%); 
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          /* MODIFIKASI: z-index tertinggi agar di atas menu mobile */
+          z-index: 99999; 
+          transition: all 1s ease;
+          -moz-transition: all 1s ease;
+          -ms-transition: all 1s ease;
+          -o-transition: all 1s ease;
+          -webkit-transition: all 1s ease;
+        }
+
+        #preloader.hide {
+          height: 0%;
+          top: -50%;
+        }
+
+        .preloader-inner {
+          position: absolute;
+          z-index: 100;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          transition: all 0.5s ease;
+          -moz-transition: all 0.5s ease;
+          -ms-transition: all 0.5s ease;
+          -o-transition: all 0.5s ease;
+          -webkit-transition: all 0.5s ease;
+          text-align: center;
+        }
+
+        #preloader.hide .preloader-inner {
+          opacity: 0;
+          visibility: hidden;
+        }
+
+        /* Spinner Loading */
+        .preloader-inner .spinner {
+          position: relative;
+          width: 100%;
+          max-width: 150px;
+          margin: 0 auto;
+          animation: dropIn 1.2s ease-out forwards;
+        }
+        
+        /* Tambahan: Memastikan logo responsif di dalam spinner */
+        .preloader-inner .spinner img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Kode asli Anda yang dipertahankan */
+        .preloader-inner .spinner img.wheel {
+          position: absolute;
+          left: 52%;
+          transform: translateX(-50%);
+          transform-origin: center;
+          top: 9px;
+          animation: spinner 2.5s infinite linear;
+          display: inline-block;
+          width: auto;
+        }
+
+        /* Aturan baru untuk teks di bawah logo */
+        .preloader-text {
+          color: #ffffff;
+          font-size: 24px;
+          font-weight: 600;
+          letter-spacing: 2px;
+          margin-top: 20px;
+          opacity: 0;
+          animation: slideInFromBottom 1.2s ease-out 0.3s forwards;
+        }
+
+
+        /* Kode asli Anda yang dipertahankan (Loading text) */
+        .preloader-inner .loading-text {
+          font-weight: var(--fw-semibold);
+          font-size: 60px;
+          line-height: 60px;
+          text-align: center;
+          user-select: none;
+          animation: scale1 2.5s infinite linear;
+          display: none;
+        }
+
+        .preloader-inner .loading-text .characters {
+          position: relative;
+          display: inline-block;
+          color: rgba(255, 255, 255, 0.2);
+        }
+
+        .preloader-inner .loading-text .characters:before {
+          content: attr(data-preloader-text);
+          position: absolute;
+          left: 0;
+          top: 0px;
+          opacity: 0;
+          transform: rotateY(-90deg);
+          color: white;
+          animation: characters 4s infinite;
+        }
+
+        .preloader-inner .loading-text .characters:nth-child(2):before {
+          animation-delay: 0.2s;
+        }
+        .preloader-inner .loading-text .characters:nth-child(3):before {
+          animation-delay: 0.4s;
+        }
+        .preloader-inner .loading-text .characters:nth-child(4):before {
+          animation-delay: 0.6s;
+        }
+        .preloader-inner .loading-text .characters:nth-child(5):before {
+          animation-delay: 0.8s;
+        }
+        .preloader-inner .loading-text .characters:nth-child(6):before {
+          animation-delay: 1s;
+        }
+        .preloader-inner .loading-text .characters:nth-child(7):before {
+          animation-delay: 1.2s;
+        }
+
+        /* Kode keyframes asli Anda yang dipertahankan */
+        @keyframes spinner {
+          to {
+            transform: translateX(50%) rotateZ(360deg);
+          }
+        }
+        @keyframes characters {
+          0%,
+          75%,
+          100% {
+            opacity: 0;
+            transform: rotateY(-90deg);
+          }
+          25%,
+          50% {
+            opacity: 1;
+            transform: rotateY(0deg);
+          }
+        }
+        @keyframes scale1 {
+          0% {
+            transform: scale(1);
+            opacity: 1;
+          }
+          50% {
+            transform: scale(0.8);
+            opacity: 0;
+          }
+          100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+        @keyframes dropIn {
+          0% {
+            transform: translateY(-200px);
+            opacity: 0;
+          }
+          100% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+        @keyframes slideInFromRight {
+          0% {
+            transform: translateX(150px);
+            opacity: 0;
+          }
+          100% {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+        @keyframes slideInFromBottom {
+          0% {
+            transform: translateY(100px); /* Mulai dari bawah */
+            opacity: 0;
+          }
+          100% {
+            transform: translateY(0); /* Kembali ke posisi normal */
+            opacity: 1;
+          }
+        }
+        /* == PRELOADER CSS END == */
+
 
         body {
             font-family: 'Inter', sans-serif;
@@ -611,7 +806,16 @@
 </head>
 
 <body>
-    <!-- Navigation -->
+    
+    <div id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <img src="../assets/img/logo.png" alt="img">
+            </div>
+            <h2 class="preloader-text">Portal SIPASTI</h2>
+        </div>
+    </div>
+
     <nav class="navbar">
         <div class="container-fluid">
             <div class="d-flex justify-content-between align-items-center w-100">
@@ -620,10 +824,9 @@
                     <span class="brand-text">SIPASTI</span>
                 </a>
                 
-                <!-- Desktop Navigation -->
                 <div class="d-none d-md-flex align-items-center gap-3">
                     <ul class="navbar-nav">
-                        <li><a href="#" class="nav-link">Home</a></li>
+                        <li><a href="#home" class="nav-link">Home</a></li>
                         <li><a href="#features" class="nav-link">Fitur</a></li>
                         <li><a href="#about" class="nav-link">Tentang</a></li>
                     </ul>
@@ -638,7 +841,6 @@
                     <?php endif; ?>
                 </div>
 
-                <!-- Mobile Menu Button -->
                 <button class="mobile-menu-btn d-md-none" id="mobileMenuBtn">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -646,10 +848,8 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu Overlay -->
     <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
 
-    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-header">
             <h2 style="margin: 0; color: white; font-weight: 800;">Menu</h2>
@@ -675,12 +875,10 @@
         </ul>
             </div>
 
-    <!-- Hero Section -->
     <section class="hero-section">
         <div class="pattern-layer"></div>
         <div class="hero-background"></div>
         
-        <!-- Animated Lines -->
         <div class="animated-lines">
             <div class="line line-1"></div>
             <div class="line line-2"></div>
@@ -688,23 +886,20 @@
             <div class="line line-4"></div>
                     </div>
         
-        <!-- Floating Elements -->
         <div class="floating-element floating-left d-none d-lg-block">
             <div class="text-center">
             <i style="font-size: 2.5rem; margin-bottom: 0.5rem;" class="fa-solid fa-book"></i>
                 <div style="font-weight: 700; font-size: 1.2rem;">Pengawasan</div>
-                <!-- <div style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">SIPASTI</div> -->
-            </div>
+                </div>
         </div>
         <div class="floating-element floating-right d-none d-lg-block">
             <div class="text-center">
             <i style="font-size: 2.5rem; margin-bottom: 0.5rem;" class="fa-solid fa-shield-halved"></i>
                 <div style="font-weight: 700; font-size: 1.2rem;">Tindak Lanjut</div>
-                <!-- <div style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">SIPASTI</div> -->
-            </div>
+                </div>
         </div>
 
-        <div class="hero-content">
+        <div id="home" class="hero-content">
             <div class="hero-badge">
                 <i class="fas fa-sparkles"></i> Portal Resmi SIPASTI
             </div>
@@ -714,18 +909,9 @@
             <p class="hero-description">
                 Sistem Informasi Pengawasan dan Tindak Lanjut
             </p>
-            <!-- <div class="hero-buttons">
-                <button class="btn btn-primary-glow" onclick="window.location.href='/app'">
-                    Buka Aplikasi <i class="fas fa-arrow-right ms-2"></i>
-                </button>
-                <button class="btn btn-outline-white" onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})">
-                    Pelajari Lebih Lanjut
-                </button>
-            </div> -->
-        </div>
+            </div>
     </section>
 
-    <!-- Features Section -->
     <section id="features" class="features-section">
         <div class="container">
             <div class="section-header">
@@ -736,82 +922,80 @@
                     Solusi lengkap untuk pengawasan dan akuntabilitas
                 </p>
             </div>
-                        
+                            
             <div class="feature-grid">
-                        <?php if (isset($menus) && !empty($menus)): ?>
-                            <?php foreach ($menus as $menu): ?>
-                        <a href="<?= $menu['link'] ?>" class="feature-card">
+                            <?php if (isset($menus) && !empty($menus)): ?>
+                                <?php foreach ($menus as $menu): ?>
+                                <a href="<?= $menu['link'] ?>" class="feature-card">
+                                    <div class="feature-icon">
+                                        <img src="<?= $menu['icon'] ?>?v=<?= $cache_buster ?? time() ?>" alt="<?= $menu['name'] ?>">
+                                            </div>
+                                    <h3 class="feature-title"><?= $menu['name'] ?></h3>
+                                    <p class="feature-description">
+                                        Klik untuk mengakses layanan <?= strtolower($menu['name']) ?>
+                                    </p>
+                                        </a>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                        <a href="#" class="feature-card">
                             <div class="feature-icon">
-                                <img src="<?= $menu['icon'] ?>?v=<?= $cache_buster ?? time() ?>" alt="<?= $menu['name'] ?>">
-                                    </div>
-                            <h3 class="feature-title"><?= $menu['name'] ?></h3>
+                                <i class="fas fa-file-invoice" style="font-size: 2.5rem; color: #c084fc;"></i>
+                            </div>
+                            <h3 class="feature-title">Temuan & Tindaklanjut</h3>
                             <p class="feature-description">
-                                Klik untuk mengakses layanan <?= strtolower($menu['name']) ?>
+                                Sistem pencatatan dan pengelolaan temuan audit serta tindak lanjutnya
+                            </p>
+                        </a>
+                        <a href="#" class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-search" style="font-size: 2.5rem; color: #c084fc;"></i>
+                            </div>
+                            <h3 class="feature-title">e-Pengawasan</h3>
+                            <p class="feature-description">
+                                Platform pengawasan digital yang terintegrasi dan real-time
+                            </p>
+                        </a>
+                        <a href="#" class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-tasks" style="font-size: 2.5rem; color: #c084fc;"></i>
+                            </div>
+                            <h3 class="feature-title">e-Penugasan</h3>
+                            <p class="feature-description">
+                                Manajemen penugasan dan monitoring pelaksanaan tugas
+                            </p>
+                        </a>
+                        <a href="#" class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-handshake" style="font-size: 2.5rem; color: #c084fc;"></i>
+                            </div>
+                            <h3 class="feature-title">Jaminan Mutu & Konsultasi</h3>
+                            <p class="feature-description">
+                                Layanan konsultasi dan jaminan mutu yang profesional
+                            </p>
+                        </a>
+                        <a href="#" class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-users" style="font-size: 2.5rem; color: #c084fc;"></i>
+                            </div>
+                            <h3 class="feature-title">Manajemen Tim</h3>
+                            <p class="feature-description">
+                                Koordinasi dan kolaborasi tim yang efektif
+                            </p>
+                        </a>
+                        <a href="#" class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-book" style="font-size: 2.5rem; color: #c084fc;"></i>
+                                    </div>
+                            <h3 class="feature-title">Perpustakaan Digital</h3>
+                            <p class="feature-description">
+                                Akses dokumen dan referensi yang komprehensif
                             </p>
                                 </a>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                    <!-- Default Features -->
-                    <a href="#" class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-file-invoice" style="font-size: 2.5rem; color: #c084fc;"></i>
-                        </div>
-                        <h3 class="feature-title">Temuan & Tindaklanjut</h3>
-                        <p class="feature-description">
-                            Sistem pencatatan dan pengelolaan temuan audit serta tindak lanjutnya
-                        </p>
-                    </a>
-                    <a href="#" class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-search" style="font-size: 2.5rem; color: #c084fc;"></i>
-                        </div>
-                        <h3 class="feature-title">e-Pengawasan</h3>
-                        <p class="feature-description">
-                            Platform pengawasan digital yang terintegrasi dan real-time
-                        </p>
-                    </a>
-                    <a href="#" class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-tasks" style="font-size: 2.5rem; color: #c084fc;"></i>
-                        </div>
-                        <h3 class="feature-title">e-Penugasan</h3>
-                        <p class="feature-description">
-                            Manajemen penugasan dan monitoring pelaksanaan tugas
-                        </p>
-                    </a>
-                    <a href="#" class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-handshake" style="font-size: 2.5rem; color: #c084fc;"></i>
-                        </div>
-                        <h3 class="feature-title">Jaminan Mutu & Konsultasi</h3>
-                        <p class="feature-description">
-                            Layanan konsultasi dan jaminan mutu yang profesional
-                        </p>
-                    </a>
-                    <a href="#" class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-users" style="font-size: 2.5rem; color: #c084fc;"></i>
-                        </div>
-                        <h3 class="feature-title">Manajemen Tim</h3>
-                        <p class="feature-description">
-                            Koordinasi dan kolaborasi tim yang efektif
-                        </p>
-                    </a>
-                    <a href="#" class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-book" style="font-size: 2.5rem; color: #c084fc;"></i>
-                                </div>
-                        <h3 class="feature-title">Perpustakaan Digital</h3>
-                        <p class="feature-description">
-                            Akses dokumen dan referensi yang komprehensif
-                        </p>
-                            </a>
-                        <?php endif; ?>
+                            <?php endif; ?>
                 </div>
             </div>
         </section>
 
-    <!-- About Section -->
     <section id="about" style="padding: 6rem 2rem; background: rgba(139, 92, 246, 0.05);">
         <div class="container" style="max-width: 1200px;">
             <div class="text-center" style="margin-bottom: 3rem;">
@@ -828,7 +1012,6 @@
             </div>
         </section>
 
-    <!-- Footer -->
     <footer style="background: rgba(26, 11, 46, 0.9); border-top: 1px solid rgba(139, 92, 246, 0.2); padding: 2rem 0;">
             <div class="container">
             <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 2rem;">
@@ -856,120 +1039,145 @@
         </div>
     </footer>
 
-    <!-- ToTop Button -->
     <div id="toTop" style="position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4); transition: all 0.3s; z-index: 999; opacity: 0; visibility: hidden;">
         <i class="fas fa-chevron-up"></i>
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        // Menjalankan semua script setelah halaman (DOM) selesai dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // === LOGIKA PRELOADER ===
+            // Sembunyikan preloader setelah 1 detik (1000ms)
+            setTimeout(function() {
+                const preloader = document.getElementById('preloader');
+                if (preloader) {
+                    preloader.classList.add('hide');
+                }
+            }, 1000);
+            // === AKHIR LOGIKA PRELOADER ===
 
-        function openMobileMenu() {
-            mobileMenu.classList.add('active');
-            mobileMenuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
 
-        function closeMobileMenu() {
-            mobileMenu.classList.remove('active');
-            mobileMenuOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
+            // === KODE ASLI DARI home.php ===
 
-        if (mobileMenuBtn) {
-            mobileMenuBtn.addEventListener('click', openMobileMenu);
-        }
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+            const mobileMenuClose = document.getElementById('mobileMenuClose');
 
-        if (mobileMenuClose) {
-            mobileMenuClose.addEventListener('click', closeMobileMenu);
-        }
+            function openMobileMenu() {
+                if (mobileMenu) mobileMenu.classList.add('active');
+                if (mobileMenuOverlay) mobileMenuOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
 
-        if (mobileMenuOverlay) {
-            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
-        }
+            function closeMobileMenu() {
+                if (mobileMenu) mobileMenu.classList.remove('active');
+                if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
 
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.mobile-nav .nav-link').forEach(link => {
-            link.addEventListener('click', function() {
-                closeMobileMenu();
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', openMobileMenu);
+            }
+
+            if (mobileMenuClose) {
+                mobileMenuClose.addEventListener('click', closeMobileMenu);
+            }
+
+            if (mobileMenuOverlay) {
+                mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+            }
+
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.mobile-nav .nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    closeMobileMenu();
+                });
             });
-        });
 
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    try {
+                        const target = document.querySelector(this.getAttribute('href'));
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    } catch (error) {
+                        console.warn('Smooth scroll target not found:', this.getAttribute('href'));
+                    }
+                });
+            });
+
+            // Add scroll effect to navbar
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                const toTop = document.getElementById('toTop');
+                
+                if (navbar) {
+                    if (window.scrollY > 50) {
+                        navbar.style.background = 'rgba(26, 11, 46, 0.95)';
+                    } else {
+                        navbar.style.background = 'rgba(26, 11, 46, 0.8)';
+                    }
+                }
+                
+                // Show/hide ToTop button
+                if (toTop) {
+                    if (window.scrollY > 300) {
+                        toTop.style.opacity = '1';
+                        toTop.style.visibility = 'visible';
+                    } else {
+                        toTop.style.opacity = '0';
+                        toTop.style.visibility = 'hidden';
+                    }
                 }
             });
-        });
 
-        // Add scroll effect to navbar
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            const toTop = document.getElementById('toTop');
-            
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(26, 11, 46, 0.95)';
-            } else {
-                navbar.style.background = 'rgba(26, 11, 46, 0.8)';
+            // ToTop button functionality
+            const toTopButton = document.getElementById('toTop');
+            if(toTopButton) {
+                toTopButton.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
             }
-            
-            // Show/hide ToTop button
-            if (toTop) {
-                if (window.scrollY > 300) {
-                    toTop.style.opacity = '1';
-                    toTop.style.visibility = 'visible';
-                } else {
-                    toTop.style.opacity = '0';
-                    toTop.style.visibility = 'hidden';
+
+            // Social media icon hover effect
+            document.querySelectorAll('footer a').forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.background = 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)';
+                    this.style.borderColor = '#c084fc';
+                    this.style.color = 'white';
+                    this.style.transform = 'translateY(-3px)';
+                });
+                link.addEventListener('mouseleave', function() {
+                    this.style.background = 'rgba(139, 92, 246, 0.2)';
+                    this.style.borderColor = 'rgba(139, 92, 246, 0.3)';
+                    this.style.color = '#c084fc';
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Pattern Layer
+            document.addEventListener("mousemove", function(e) {
+                const pattern = document.querySelector(".pattern-layer");
+                if (pattern) {
+                    const x = (e.clientX / window.innerWidth) * 30;
+                    const y = (e.clientY / window.innerHeight) * 30;
+                    pattern.style.backgroundPosition = `${x}px ${y}px`;
                 }
-            }
-        });
-
-        // ToTop button functionality
-        document.getElementById('toTop').addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // Social media icon hover effect
-        document.querySelectorAll('footer a').forEach(link => {
-            link.addEventListener('mouseenter', function() {
-                this.style.background = 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)';
-                this.style.borderColor = '#c084fc';
-                this.style.color = 'white';
-                this.style.transform = 'translateY(-3px)';
             });
-            link.addEventListener('mouseleave', function() {
-                this.style.background = 'rgba(139, 92, 246, 0.2)';
-                this.style.borderColor = 'rgba(139, 92, 246, 0.3)';
-                this.style.color = '#c084fc';
-                this.style.transform = 'translateY(0)';
-            });
-        });
-    </script>
 
-    <!-- Pattern Layer -->
-    <script>
-        document.addEventListener("mousemove", function(e) {
-            const pattern = document.querySelector(".pattern-layer");
-            const x = (e.clientX / window.innerWidth) * 30;
-            const y = (e.clientY / window.innerHeight) * 30;
-            pattern.style.backgroundPosition = `${x}px ${y}px`;
-        });
+        }); // Akhir dari DOMContentLoaded
     </script>
+    
 </body>
-
 </html>
