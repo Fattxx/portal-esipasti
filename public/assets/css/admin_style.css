@@ -500,3 +500,65 @@ body {
         z-index: 1035;
     }
 }
+/* === Styling Tombol Close Sidebar (dengan box) === */
+
+/* Target tombol close di sidebar */
+.sidebar .sidebar-close {
+    /* Menghilangkan border/shadow aneh saat di-klik */
+    box-shadow: none !important;
+    outline: none !important;
+    padding: 0; /* Pastikan padding tombolnya 0 agar box yang mengambil alih ukuran */
+}
+
+/* Styling untuk 'box' di sekitar ikon 'X' */
+.sidebar .sidebar-close .close-icon-box {
+    display: inline-flex; 
+    align-items: center;  
+    justify-content: center; 
+
+    width: 40px;          
+    height: 40px;         
+    border-radius: 8px;   
+    background-color: #8b5cf6; /* Warna ungu (seperti contoh) */
+    
+    transition: all 0.2s ease-in-out;
+}
+
+/* Styling ikon 'X' di dalamnya */
+.sidebar .sidebar-close .close-icon-box .fa-times {
+    font-size: 1.25rem;   
+    color: #ffffff;       /* Warna ikon jadi putih */
+    transition: all 0.2s ease-in-out; 
+}
+
+/* Efek saat mouse diarahkan (hover) pada box */
+.sidebar .sidebar-close .close-icon-box:hover {
+    background-color: #5a2e9b; /* Warna ungu lebih gelap saat hover */
+}
+
+/* Efek saat mouse diarahkan (hover) pada ikon 'X' */
+.sidebar .sidebar-close .close-icon-box:hover .fa-times {
+    color: #dc3545;        /* Ubah warna ikon menjadi merah saat hover */
+    transform: scale(1.1); /* Sedikit membesar */
+}
+
+/* --- (Opsional) Sesuaikan agar mirip ikon menu yang Anda berikan --- */
+/* Jika Anda ingin warna latar belakang ungu seperti contoh menu */
+/* Anda bisa mengubah .close-icon-box background-color menjadi: */
+/* background-color: #6f42c1;  (contoh warna ungu) */
+/* Dan warna .fa-times menjadi: */
+/* color: #ffffff; (putih) */
+
+/* Contoh untuk warna ungu seperti yang Anda berikan */
+/* UNCOMMENT UNTUK MENGGUNAKAN INI */
+/*
+.sidebar .sidebar-close .close-icon-box {
+    background-color: #6f42c1; 
+}
+.sidebar .sidebar-close .close-icon-box .fa-times {
+    color: #ffffff; 
+}
+.sidebar .sidebar-close .close-icon-box:hover {
+    background-color: #5a2e9b; 
+}
+*/

@@ -18,13 +18,18 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebar">
-                <div class="position-sticky px-3">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <a href="/admin" class="sidebar-brand">MENU ADMIN SIPASTI</a>
-                        <button class="btn btn-link text-dark d-md-none sidebar-close" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar">
+
+                <div class="position-sticky px-3 position-relative">
+
+                    <button class="btn btn-link text-dark d-md-none sidebar-close" type="button">
+                        <span class="close-icon-box">
                             <i class="fas fa-times"></i>
-                        </button>
+                        </span>
+                    </button>
+
+                    <div class="mb-3 mt-5 pt-2"> <a href="" class="sidebar-brand">MENU ADMIN SIPASTI</a>
                     </div>
+
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link" href="/">
@@ -66,16 +71,16 @@
 
                 <div class="content-wrapper">
                     <?php if (session()->has('message')): ?>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <?= session('message') ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <?= session('message') ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
                     <?php endif; ?>
                     <?php if (session()->has('error')): ?>
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <?= session('error') ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <?= session('error') ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
                     <?php endif; ?>
 
                     <?= $this->renderSection('content') ?>
