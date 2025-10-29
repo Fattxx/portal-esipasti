@@ -18,11 +18,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebar">
-
-                <div class="position-sticky px-3 position-relative">
-
-                    <button class="btn btn-link text-dark d-md-none sidebar-close" type="button">
-                        <span class="close-icon-box">
+                <div class="position-sticky px-3">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <button class="btn btn-link text-dark d-md-none sidebar-close" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar">
                             <i class="fas fa-times"></i>
                         </span>
                     </button>
