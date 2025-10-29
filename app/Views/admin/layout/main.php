@@ -20,7 +20,6 @@
             <div class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebar">
                 <div class="position-sticky px-3">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <a href="/admin" class="sidebar-brand">MENU ADMIN SIPASTI</a>
                         <button class="btn btn-link text-dark d-md-none sidebar-close" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar">
                             <i class="fas fa-times"></i>
                         </button>
