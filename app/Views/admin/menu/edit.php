@@ -30,7 +30,7 @@
             <?= csrf_field() ?>
 
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-lg-7">
                     <div class="mb-3">
                         <label for="name-input" class="form-label fw-medium">Nama Menu</label>
                         <input type="text" class="form-control" id="name-input" name="name" value="<?= esc(old('name', $menu['name'] ?? '')) ?>" required>
@@ -48,7 +48,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-5">
+                <div class="col-lg-5 mb-3 mb-lg-0">
                     <div class="mb-3">
                         <label for="icon-input" class="form-label fw-medium">Icon (SVG atau PNG)</label>
                         <input type="file" class="form-control" id="icon-input" name="icon" accept=".svg,.png">
@@ -69,8 +69,8 @@
 
             <hr class="my-4">
 
-            <div class="d-flex justify-content-end">
-                <a href="/admin/menu" class="btn btn-outline-secondary me-2">Batal</a>
+            <div class="d-flex flex-column flex-sm-row justify-content-end gap-2">
+                <a href="/admin/menu" class="btn btn-outline-secondary">Batal</a>
                 <button type="submit" class="btn btn-add">Simpan Perubahan</button>
             </div>
         </form>
@@ -78,30 +78,7 @@
 </div>
 
 <style>
-    /* Memberi gaya khusus untuk wadah preview di halaman edit */
-    .menu-item-preview {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 1.5rem;
-        min-height: 180px;
-        /* Memberi tinggi minimal agar rapi */
-    }
 
-    /* KUNCI PERBAIKAN: Mengatur ukuran gambar preview */
-    #icon-preview {
-        max-width: 80px;
-        /* Batasi lebar maksimum gambar */
-        max-height: 80px;
-        /* Batasi tinggi maksimum gambar */
-        height: auto;
-        object-fit: contain;
-        /* Pastikan gambar pas tanpa peot */
-        display: block;
-        margin-bottom: 1rem;
-        /* Memberi jarak ke teks nama di bawahnya */
-    }
 </style>
 
 <?= $this->endSection() ?>

@@ -1,35 +1,21 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="id">
 
 <head>
-    <!-- Meta Tags -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <meta name="description" content="Kimono - Photography Agency">
-    <meta name="author" content="">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal SIPASTI - Sistem Informasi Pengawasan dan Tindak Lanjut</title>
 
-    <!-- Favicon and touch Icons -->
-    <link href="../assets/img/favicon.png" rel="shortcut icon" type="image/png">
-    <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-    <link href="../assets/img/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
-    <link href="../assets/img/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
-    <link href="../assets/img/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
-
-    <!-- Page Title -->
-    <title>Portal SIPASTI</title>
-
-    <!-- Styles Include -->
-    <link rel="stylesheet" href="../assets/css/main.css">
-
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/home-new.css">
 </head>
 
-
-<body class="theme-style--light">
-
+<body>
     <!-- Preloader -->
     <div id="preloader">
         <div class="preloader-inner">
@@ -39,253 +25,360 @@
             <h2 class="preloader-text">Portal SIPASTI</h2>
         </div>
     </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <a class="navbar-brand" href="/">
+                    <i class="fas fa-file-alt"></i>
+                    <span class="brand-text">SIPASTI</span>
+                </a>
 
-    <!-- pointer start -->
-    <div class="pointer bnz-pointer" id="bnz-pointer"></div>
+                <!-- Desktop Navigation -->
+                <div class="d-none d-md-flex align-items-center gap-3">
+                    <ul class="navbar-nav">
+                        <li><a href="#" class="nav-link">Home</a></li>
+                        <li><a href="#features" class="nav-link">Fitur</a></li>
+                        <li><a href="#about" class="nav-link">Tentang</a></li>
+                    </ul>
+                    <?php if (!session()->has('user_id')): ?>
+                        <a href="/login" class="btn-login">
+                            <i class="fas fa-lock"></i> <span>Masuk</span>
+                        </a>
+                    <?php else: ?>
+                        <a href="/admin/menu" class="btn-login">
+                            <i class="fas fa-user"></i> <span>Dashboard</span>
+                        </a>
+                    <?php endif; ?>
+                </div>
 
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn d-md-none" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
 
-    <!-- Main Header -->
-    <!-- End Main Header -->
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <h2 style="margin: 0; color: white; font-weight: 800;">Menu</h2>
+            <button class="mobile-menu-close" id="mobileMenuClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav">
+            <li><a href="#" class="nav-link">Home</a></li>
+            <li><a href="#features" class="nav-link">Fitur</a></li>
+            <li><a href="#about" class="nav-link">Tentang</a></li>
+            <li>
+                <?php if (!session()->has('user_id')): ?>
+                    <a href="/login" class="nav-link">
+                        <i class="fas fa-lock"></i> Masuk
+                    </a>
+                <?php else: ?>
+                    <a href="/admin/menu" class="nav-link">
+                        <i class="fas fa-user"></i> Dashboard
+                    </a>
+                <?php endif; ?>
+            </li>
+        </ul>
+    </div>
 
-    <!-- Mobile Responsive Menu -->
-    <div class="mr_menu" data-lenis-prevent>
-        <button type="button" class="mr_menu_close"><i class="bi bi-x-lg"></i></button>
-        <div class="logo"></div> <!-- Keep this div empty. Logo will come here by JavaScript -->
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="pattern-layer"></div>
+        <div class="hero-background"></div>
 
-        <h6>Menu</h6>
-        <div class="mr_navmenu"></div> <!-- Keep this div empty. Menu will come here by JavaScript -->
+        <!-- Animated Lines -->
+        <div class="animated-lines">
+            <div class="line line-1"></div>
+            <div class="line line-2"></div>
+            <div class="line line-3"></div>
+            <div class="line line-4"></div>
+        </div>
 
-        <h6>Contact Us</h6>
-        <div class="wptb-icon-box1 style2">
-            <div class="wptb-item--inner flex-start">
-                <div class="wptb-item--icon"><i class="bi bi-envelope"></i></div>
-                <div class="wptb-item--holder">
-                    <p class="wptb-item--description"><a href="mailto:bakarashshiddiq2@gmail.com">sipasti@gmail.com</a>
+        <!-- Floating Elements -->
+        <div class="floating-element floating-left d-none d-lg-block">
+            <div class="text-center">
+                <i style="font-size: 2.5rem; margin-bottom: 0.5rem;" class="fa-solid fa-book"></i>
+                <div style="font-weight: 700; font-size: 1.2rem;">Pengawasan</div>
+                <!-- <div style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">SIPASTI</div> -->
+            </div>
+        </div>
+        <div class="floating-element floating-right d-none d-lg-block">
+            <div class="text-center">
+                <i style="font-size: 2.5rem; margin-bottom: 0.5rem;" class="fa-solid fa-shield-halved"></i>
+                <div style="font-weight: 700; font-size: 1.2rem;">Tindak Lanjut</div>
+                <!-- <div style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">SIPASTI</div> -->
+            </div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-sparkles"></i> Portal Resmi SIPASTI
+            </div>
+            <h1 class="hero-title">
+                Portal <span class="hero-title-highlight">Sipasti</span>
+            </h1>
+            <p class="hero-description">
+                Sistem Informasi Pengawasan dan Tindak Lanjut
+            </p>
+            <!-- <div class="hero-buttons">
+                <button class="btn btn-primary-glow" onclick="window.location.href='/app'">
+                    Buka Aplikasi <i class="fas fa-arrow-right ms-2"></i>
+                </button>
+                <button class="btn btn-outline-white" onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})">
+                    Pelajari Lebih Lanjut
+                </button>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="section-title-highlight">Fitur Utama</span>
+                </h2>
+                <p class="section-subtitle">
+                    Solusi lengkap untuk pengawasan dan akuntabilitas
+                </p>
+            </div>
+
+            <div class="feature-grid">
+                <?php if (isset($menus) && !empty($menus)): ?>
+                    <?php foreach ($menus as $menu): ?>
+                        <a href="<?= $menu['link'] ?>" class="feature-card">
+                            <div class="feature-icon">
+                                <img src="<?= $menu['icon'] ?>?v=<?= $cache_buster ?? time() ?>" alt="<?= $menu['name'] ?>">
+                            </div>
+                            <h3 class="feature-title"><?= $menu['name'] ?></h3>
+                            <p class="feature-description">
+                                Klik untuk mengakses layanan <?= strtolower($menu['name']) ?>
+                            </p>
+                        </a>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <!-- Default Features -->
+                    <a href="#" class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-invoice" style="font-size: 2.5rem; color: #c084fc;"></i>
+                        </div>
+                        <h3 class="feature-title">Temuan & Tindaklanjut</h3>
+                        <p class="feature-description">
+                            Sistem pencatatan dan pengelolaan temuan audit serta tindak lanjutnya
+                        </p>
+                    </a>
+                    <a href="#" class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-search" style="font-size: 2.5rem; color: #c084fc;"></i>
+                        </div>
+                        <h3 class="feature-title">e-Pengawasan</h3>
+                        <p class="feature-description">
+                            Platform pengawasan digital yang terintegrasi dan real-time
+                        </p>
+                    </a>
+                    <a href="#" class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tasks" style="font-size: 2.5rem; color: #c084fc;"></i>
+                        </div>
+                        <h3 class="feature-title">e-Penugasan</h3>
+                        <p class="feature-description">
+                            Manajemen penugasan dan monitoring pelaksanaan tugas
+                        </p>
+                    </a>
+                    <a href="#" class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-handshake" style="font-size: 2.5rem; color: #c084fc;"></i>
+                        </div>
+                        <h3 class="feature-title">Jaminan Mutu & Konsultasi</h3>
+                        <p class="feature-description">
+                            Layanan konsultasi dan jaminan mutu yang profesional
+                        </p>
+                    </a>
+                    <a href="#" class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users" style="font-size: 2.5rem; color: #c084fc;"></i>
+                        </div>
+                        <h3 class="feature-title">Manajemen Tim</h3>
+                        <p class="feature-description">
+                            Koordinasi dan kolaborasi tim yang efektif
+                        </p>
+                    </a>
+                    <a href="#" class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-book" style="font-size: 2.5rem; color: #c084fc;"></i>
+                        </div>
+                        <h3 class="feature-title">Perpustakaan Digital</h3>
+                        <p class="feature-description">
+                            Akses dokumen dan referensi yang komprehensif
+                        </p>
+                    </a>
+                <?php endif; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" style="padding: 6rem 2rem; background: rgba(139, 92, 246, 0.05);">
+        <div class="container" style="max-width: 1200px;">
+            <div class="text-center" style="margin-bottom: 3rem;">
+                <div style="color: #c084fc; font-weight: 600; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px;">
+                    <span>//</span> Tentang SiPasti
+                </div>
+                <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 2rem;">
+                    Sistem Informasi<span style="display: block; -webkit-background-clip: text;">Pengawasan dan Tindak Lanjut</span>
+                </h1>
+                <p style="font-size: 1.25rem; max-width: 800px; margin: 0 auto; line-height: 1.8;">
+                    Merupakan Sistem Informasi yang menunjang kinerja pengawasan yang dilakukan oleh Para Auditor Inspektorat, serta merupakan sebuah sistem tindak lanjut bagi OPD yang menjadi sasaran pengawasan/pemeriksaan.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: rgba(26, 11, 46, 0.9); border-top: 1px solid rgba(139, 92, 246, 0.2); padding: 2rem 0;">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 2rem;">
+                <div>
+                    <p style="margin: 0; color: rgba(255, 255, 255, 0.7);">
+                        <a href="#" style="color: #c084fc; text-decoration: none; font-weight: 700;">SIPASTI</a> -
+                        Sistem Informasi Pengawasan dan Tindak Lanjut
                     </p>
                 </div>
-            </div>
-        </div>
-
-        <div class="wptb-icon-box1 style2">
-            <div class="wptb-item--inner flex-start">
-                <div class="wptb-item--icon"><i class="bi bi-geo-alt"></i></div>
-                <div class="wptb-item--holder">
-                    <p class="wptb-item--description"><a href="contact-1.html">28 Street, New York, USA</a></p>
-                </div>
-            </div>
-        </div>
-
-        <div class="wptb-icon-box1 style2">
-            <div class="wptb-item--inner flex-start">
-                <div class="wptb-item--icon"><i class="bi bi-envelope"></i></div>
-                <div class="wptb-item--holder">
-                    <p class="wptb-item--description"><a href="tel:+98765432122811">(+987) 654 321 228 11</a></p>
-                </div>
-            </div>
-        </div>
-
-        <h6>Find Our Page</h6>
-        <div class="social-box">
-            <ul>
-                <li><a href="https://www.facebook.com/"><i class="bi bi-facebook"></i></a></li>
-                <li><a href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a></li>
-                <li><a href="https://www.linkedin.com/"><i class="bi bi-linkedin"></i></a></li>
-                <li><a href="https://www.behance.com/"><i class="bi bi-behance"></i></a></li>
-                <li><a href="https://www.youtube.com/"><i class="bi bi-youtube"></i></a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="aside_info_wrapper" data-lenis-prevent>
-        <button class="aside_close">Close <i class="bi bi-x-lg"></i></button>
-
-        <div class="aside_logo logo">
-            <a href="index.html" class="light_logo"><img src="../assets/img/logo.png" alt="logo"></a>
-            <a href="index.html" class="dark_logo"><img src="../assets/img/logo.png" alt="logo"></a>
-        </div>
-
-        <div class="aside_info_inner">
-
-            <h6>MENU</h6>
-            <div class="insta-logo">
-                <i class="bi bi-instagram"></i> PORTAL SIPASTI
-            </div>
-            <div class="wptb-instagram--gallery">
-                <div class="wptb-item--inner d-flex align-items-center justify-content-center flex-wrap">
-                    <div class="wptb-item">
-                        <a href="/index.php/admin/menu" class="btn btn-admin-custom">
-                            ADMIN
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="wptb-icon-box1 style2">
-                <div class="wptb-item--inner flex-start">
-                    <div class="wptb-item--icon"><i class="bi bi-envelope"></i></div>
-                    <div class="wptb-item--holder">
-                        <p class="wptb-item--description"><a href="mailto:sipasti@gmail.com">sipasti@gmail.com</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="wptb-icon-box1 style2">
-                <div class="wptb-item--inner flex-start">
-                    <div class="wptb-item--icon"><i class="bi bi-geo-alt"></i></div>
-                    <div class="wptb-item--holder">
-                        <p class="wptb-item--description"><a href="contact-1.html">Jl. Tjilik Riwut KM. 1 No. 5</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="wptb-icon-box1 style2">
-                <div class="wptb-item--inner flex-start">
-                    <div class="wptb-item--icon"><i class="bi bi-envelope"></i></div>
-                    <div class="wptb-item--holder">
-                        <p class="wptb-item--description"><a href="tel:+98765432122811">(+987) 654 321 228 11</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Search -->
-    <div class="search-modal">
-        <div class="modal fade" id="modalSearch">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content">
-                    <div class="search_overlay">
-                        <form class="credential-form" method="post">
-                            <div class="form-group">
-                                <input type="text" name="search" class="keyword form-control" placeholder="Search Here">
-                            </div>
-                            <button type="submit" class="btn-search">
-                                <span class="text-first"> <i class="bi bi-arrow-right"></i> </span>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Wrapper-->
-    <main class="wrapper">
-        <!-- Slider Section -->
-        <section class="wptb-slider style1">
-            <div class="menu-wrapper d-flex justify-content-end me-5">
-                <div class="justify-content-center justify-content-xl-between">
-                    <div class="aside_open d-none d-xl-flex">
-                        <div class="aside-open--inner">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pattern-layer"></div>
-            <div class="swiper-container wptb-swiper-slider-one">
-                <!-- swiper slides -->
-                <div class="swiper-wrapper">
-                    <!-- Slide Item -->
-                    <div class="swiper-slide">
-                        <div class="wptb-slider--item">
-                            <!-- Layer Image -->
-
-                            <div class="wptb-slider--content">
-                                <div class="container">
-                                    <div class="menu-grid">
-                                        <?php if (isset($menus) && !empty($menus)): ?>
-                                            <?php foreach ($menus as $menu): ?>
-                                                <a href="<?= $menu['link'] ?>" class="menu-item">
-                                                    <div class="menu-icon"><img
-                                                            src="<?= $menu['icon'] ?>?v=<?= $cache_buster ?>"
-                                                            alt="<?= $menu['name'] ?>"></div>
-                                                    <div class="menu-text"><?= $menu['name'] ?></div>
-                                                </a>
-                                            <?php endforeach; ?>
-                                        <?php else: ?>
-                                            <!-- Fallback jika tidak ada menu -->
-                                            <a href="#" class="menu-item">
-                                                <div class="menu-icon"><img src="../assets/img/icons/default.svg" alt="">
-                                                </div>
-                                                <div class="menu-text">Menu Tidak Tersedia</div>
-                                            </a>
-                                        <?php endif; ?>
-                                    </div>
-                                    <div class="">
-                                        <div class="wptb-heading">
-                                            <div class="wptb-item--inner">
-                                                <h1 class="wptb-item--title">Portal <br> <span>Sipasti</span></h1>
-                                                <h1 class="wptb-item--title text-outline">Sipasti</h1>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Slide Item -->
-                </div>
-            </div>
-
-            <!-- Left Pane -->
-
-        </section>
-
-        <section id="about-sipasti" class="container">
-            <div class="container">
-                <div class="wptb-heading">
-                    <div class="wptb-item--inner text-center">
-                        <h6 class="wptb-item--subtitle"><span>//</span> Tentang SiPasti</h6>
-                        <h1 class="wptb-item--title">Sistem Informasi<span> </br> Pengawasan dan Tindak Lanjut</span>
-                        </h1>
-                        <p class="wptb-about--text-one mb-4 w-75 mx-auto fs-20">Merupakan Sistem Informasi yang
-                            menunjang kinerja
-                            pengawasan yang dilakukan oleh Para Auditor Inspektorat, serta merupakan sebuah sistem
-                            tindak lanjut bagi OPD yang menjadi sasaran pengawasan/pemeriksaan.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-    </main>
-
-    <footer class="footer style1" style="background-color: #212121;">
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="footer-bottom-inner"
-                    style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-
-                    <div class="copyright">
-                        <p style="margin: 0;"><a href="https://themeforest.net/user/wpthemebooster">SIPASTI</a>
-                            Sistem Informasi Pengawasan dan Tindak Lanjut</p>
-                    </div>
-
-                    <div class="social-box style-oval">
-                        <ul>
-                            <li><a href="https://www.facebook.com/" class="bi bi-facebook"></a></li>
-                            <li><a href="https://www.instagram.com/" class="bi bi-instagram"></a></li>
-                            <li><a href="https://www.linkedin.com/" class="bi bi-linkedin"></a></li>
-                            <li><a href="https://www.behance.com/" class="bi bi-behance"></a></li>
-                        </ul>
-                    </div>
-
+                <div style="display: flex; gap: 1rem;">
+                    <a href="https://www.facebook.com/" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(139, 92, 246, 0.3); display: flex; align-items: center; justify-content: center; color: #c084fc; text-decoration: none; transition: all 0.3s;">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(139, 92, 246, 0.3); display: flex; align-items: center; justify-content: center; color: #c084fc; text-decoration: none; transition: all 0.3s;">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(139, 92, 246, 0.3); display: flex; align-items: center; justify-content: center; color: #c084fc; text-decoration: none; transition: all 0.3s;">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.behance.com/" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(139, 92, 246, 0.3); display: flex; align-items: center; justify-content: center; color: #c084fc; text-decoration: none; transition: all 0.3s;">
+                        <i class="fab fa-behance"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <div class="totop">
-        <a href="#"><i class="bi bi-chevron-up"></i></a>
+    <!-- ToTop Button -->
+    <div id="toTop" style="position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4); transition: all 0.3s; z-index: 999; opacity: 0; visibility: hidden;">
+        <i class="fas fa-chevron-up"></i>
     </div>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+        function openMobileMenu() {
+            mobileMenu.classList.add('active');
+            mobileMenuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', openMobileMenu);
+        }
+
+        if (mobileMenuClose) {
+            mobileMenuClose.addEventListener('click', closeMobileMenu);
+        }
+
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-nav .nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                closeMobileMenu();
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            const toTop = document.getElementById('toTop');
+
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(26, 11, 46, 0.95)';
+            } else {
+                navbar.style.background = 'rgba(26, 11, 46, 0.8)';
+            }
+
+            // Show/hide ToTop button
+            if (toTop) {
+                if (window.scrollY > 300) {
+                    toTop.style.opacity = '1';
+                    toTop.style.visibility = 'visible';
+                } else {
+                    toTop.style.opacity = '0';
+                    toTop.style.visibility = 'hidden';
+                }
+            }
+        });
+
+        // ToTop button functionality
+        document.getElementById('toTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Social media icon hover effect
+        document.querySelectorAll('footer a').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.background = 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)';
+                this.style.borderColor = '#c084fc';
+                this.style.color = 'white';
+                this.style.transform = 'translateY(-3px)';
+            });
+            link.addEventListener('mouseleave', function() {
+                this.style.background = 'rgba(139, 92, 246, 0.2)';
+                this.style.borderColor = 'rgba(139, 92, 246, 0.3)';
+                this.style.color = '#c084fc';
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+
+    <!-- Pattern Layer -->
     <script>
         document.addEventListener("mousemove", function(e) {
             const pattern = document.querySelector(".pattern-layer");
@@ -294,7 +387,6 @@
             pattern.style.backgroundPosition = `${x}px ${y}px`;
         });
     </script>
-
 
     <!-- Core JS -->
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
@@ -336,7 +428,6 @@
 
     <!-- Theme Custom JS -->
     <script src="../assets/js/theme.js"></script>
-
 </body>
 
 </html>
