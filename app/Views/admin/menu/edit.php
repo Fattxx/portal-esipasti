@@ -78,30 +78,7 @@
 </div>
 
 <style>
-    /* Memberi gaya khusus untuk wadah preview di halaman edit */
-    .menu-item-preview {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 1.5rem;
-        min-height: 180px;
-        /* Memberi tinggi minimal agar rapi */
-    }
 
-    /* KUNCI PERBAIKAN: Mengatur ukuran gambar preview */
-    #icon-preview {
-        max-width: 80px;
-        /* Batasi lebar maksimum gambar */
-        max-height: 80px;
-        /* Batasi tinggi maksimum gambar */
-        height: auto;
-        object-fit: contain;
-        /* Pastikan gambar pas tanpa peot */
-        display: block;
-        margin-bottom: 1rem;
-        /* Memberi jarak ke teks nama di bawahnya */
-    }
 </style>
 
 <?= $this->endSection() ?>
